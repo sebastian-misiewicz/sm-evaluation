@@ -24,6 +24,7 @@
 		<dbunit.version>2.4.9</dbunit.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<hamcrest.version>1.3</hamcrest.version>
+		<mysql.version>5.1.30</mysql.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,7 +49,11 @@
 				<artifactId>hsqldb</artifactId>
 				<version>${hsqldb.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
 
 			<!-- dbUnit -->
 			<dependency>
