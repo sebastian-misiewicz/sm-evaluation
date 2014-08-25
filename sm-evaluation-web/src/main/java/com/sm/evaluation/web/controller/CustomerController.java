@@ -27,11 +27,11 @@ public class CustomerController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(@RequestParam(value = "name", defaultValue = "") String name, Model model) {
-		List<CustomerTO> customerTOs = null;
+		CustomerTO customerTO = null;
 		if (!"".equals(name)) {
-			customerTOs = customerService.getByName(name);
+			customerTO = customerService.getByPassword(name);
 		}
-		model.addAttribute("customerTOs", customerTOs);
+		model.addAttribute("customerTO", customerTO);
 		model.addAttribute("name", name);
 		return "index";
 	}

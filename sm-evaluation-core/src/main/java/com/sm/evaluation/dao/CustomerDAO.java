@@ -12,17 +12,15 @@ import com.sm.evaluation.entity.CustomerBE;
 
 @Repository
 @Transactional
-public class CustomerDAO implements ICustomerDAO {
+public class CustomerDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Override
 	public void saveOrUpdate(CustomerBE customerBE) {
 		sessionFactory.getCurrentSession().saveOrUpdate(customerBE);
 	}
 
-	@Override
 	@SuppressWarnings("unchecked")
 	public List<CustomerBE> getByName(String name) {
 		Query query = sessionFactory.getCurrentSession().createQuery(//
@@ -36,17 +34,26 @@ public class CustomerDAO implements ICustomerDAO {
 		return customers;
 	}
 
-	@Override
 	public CustomerBE getById(int id) {
 		CustomerBE customerBE = (CustomerBE) sessionFactory.getCurrentSession().get(CustomerBE.class, id);
 
 		return customerBE;
 	}
 
-	@Override
 	public void delete(int id) {
 		CustomerBE customerBE = (CustomerBE) sessionFactory.getCurrentSession().get(CustomerBE.class, id);
 		sessionFactory.getCurrentSession().delete(customerBE);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<CustomerBE> getAll() {
+		Query query = sessionFactory.getCurrentSession().createQuery(//
+				"select customer " + //
+						"from CustomerBE as customer");
+
+		List<CustomerBE> customers = query.list();
+
+		return customers;
 	}
 
 }

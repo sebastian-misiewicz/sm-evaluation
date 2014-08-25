@@ -29,7 +29,7 @@ import com.sm.evaluation.entity.CustomerBE;
 public class CustomerDAOTest {
 
 	@Autowired
-	private ICustomerDAO customerDAO;
+	private CustomerDAO customerDAO;
 
 	@Test
 	public void testSaveOrUpdate() {
@@ -47,7 +47,7 @@ public class CustomerDAOTest {
 	}
 
 	@Test
-	@DatabaseSetup("classpath:sampledata/few-customers.xml")
+	@DatabaseSetup("classpath:sampledata/many-customers.xml")
 	public void testGetByName() {
 		String expectedName = "Kowalski";
 

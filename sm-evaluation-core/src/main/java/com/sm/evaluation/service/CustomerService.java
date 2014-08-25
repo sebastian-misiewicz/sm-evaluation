@@ -9,14 +9,18 @@ import org.springframework.stereotype.Service;
 
 import com.sm.evaluation.api.CustomerTO;
 import com.sm.evaluation.api.ICustomerService;
-import com.sm.evaluation.dao.ICustomerDAO;
+import com.sm.evaluation.dao.CustomerCache;
+import com.sm.evaluation.dao.CustomerDAO;
 import com.sm.evaluation.entity.CustomerBE;
 
 @Service
 public class CustomerService implements ICustomerService {
 
 	@Autowired
-	private ICustomerDAO customerDAO;
+	private CustomerDAO customerDAO;
+
+	@Autowired
+	private CustomerCache customerCache;
 
 	@Autowired
 	private Converter<CustomerBE, CustomerTO> customerBEToCustomerTOConverter;
@@ -59,6 +63,16 @@ public class CustomerService implements ICustomerService {
 		}
 
 		return customerTOs;
+	}
+
+	@Override
+	public CustomerTO getByPassword(String password) {
+		CustomerBE customerBE = customerCache.getByPassword(password);
+		if (customerBE == null) {
+			return null;
+		}
+		CustomerTO customerTO = customerBEToCustomerTOConverter.convert(customerBE);
+		return customerTO;
 	}
 
 }

@@ -17,6 +17,15 @@ public interface ICustomerService {
 	 * @return {@link List} of {@link CustomerTO}s
 	 */
 	List<CustomerTO> getByName(String name);
+	
+	/**
+	 * Retrieves a customer by the given password.
+	 * 
+	 * @param password
+	 *            the password
+	 * @return {@link CustomerTO}s
+	 */
+	CustomerTO getByPassword(String password);
 
 	/**
 	 * Retrieves the customer by its id.
