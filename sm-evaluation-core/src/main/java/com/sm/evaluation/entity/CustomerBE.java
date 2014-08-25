@@ -1,5 +1,7 @@
 package com.sm.evaluation.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,6 +50,15 @@ public class CustomerBE {
 
 	@Column(name = "fax", length = 100)
 	private String fax;
+	
+	@Column(name = "comment", length = 10000)
+	private String comment;
+	
+	@Column(name = "registerdate")
+	private Date registerDate;
+	
+	@Column(name = "logindate")
+	private Date loginDate;
 
 	public Integer getId() {
 		return id;
