@@ -11,7 +11,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.sm.evaluation.entity.CustomerBE;
+import com.sm.evaluation.api.CustomerTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/test-context-config.xml" })
@@ -24,9 +24,7 @@ public class CustomerCacheTest {
 	
 	@Test
 	public void test() {
-		CustomerBE customerBE = customerCache.getByPassword("aaa");
-		
-		customerBE.getAddress();
+		CustomerTO customerTO = customerCache.getByPassword("aaa");
 	}
 	
 	
