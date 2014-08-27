@@ -47,9 +47,9 @@ public class CustomerDAOTest {
 	}
 
 	@Test
-	@DatabaseSetup("classpath:sampledata/many-customers.xml")
+	@DatabaseSetup("classpath:sampledata/test-customers.xml")
 	public void testGetByName() {
-		String expectedName = "Kowalski";
+		String expectedName = "Benjamin";
 
 		List<CustomerBE> customers = customerDAO.getByName(expectedName);
 
