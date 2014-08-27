@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sm.evaluation.api.CustomerTO;
-import com.sm.evaluation.entity.CustomerBE;
 import com.sm.evaluation.service.converter.CustomerBEToCustomerTOConverter;
 
 @Component
@@ -33,9 +32,9 @@ public class CustomerCache {
 		if (cache == null) {
 			cache = new HashMap<String, CustomerTO>();
 			
-			List<CustomerBE> allCustomers = customerDAO.getAll();
-			for(CustomerBE customerBE : allCustomers) {
-				cache.put(customerBE.getPassword(), customerBEToCustomerTOConverter.convert(customerBE));
+			List<CustomerTO> allCustomers = customerDAO.getAll();
+			for(CustomerTO customerTO : allCustomers) {
+				cache.put(customerTO.getPassword(), customerTO);
 			}
 		}
 	}

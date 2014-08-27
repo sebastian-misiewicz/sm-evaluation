@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sm.evaluation.api.CustomerTO;
 import com.sm.evaluation.entity.CustomerBE;
 
 @Repository
@@ -46,12 +47,12 @@ public class CustomerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CustomerBE> getAll() {
+	public List<CustomerTO> getAll() {
 		Query query = sessionFactory.getCurrentSession().createQuery(//
-				"select customer " + //
+				"select new com.sm.evaluation.api.CustomerTO(customer.id, customer.name, customer.password) " + //
 						"from CustomerBE as customer");
 
-		List<CustomerBE> customers = query.list();
+		List<CustomerTO> customers = query.list();
 
 		return customers;
 	}
