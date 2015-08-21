@@ -3,7 +3,7 @@ jdk: oraclejdk7
 cache: true
 
 script:
-	- mvn install -f sm-evaluation-base/pom.xml
+	- mvn install -DskipTests -f sm-evaluation-base/pom.xml
 
 after_success:
    - mvn test -f sm-evaluation-base/pom.xml
