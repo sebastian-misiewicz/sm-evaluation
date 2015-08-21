@@ -1,6 +1,5 @@
 language: java
 jdk: oraclejdk7
-cache: true
 
 script:
 	- mvn install -DskipTests -f sm-evaluation-base/pom.xml
