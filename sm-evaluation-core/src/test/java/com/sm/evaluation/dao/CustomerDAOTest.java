@@ -47,9 +47,19 @@ public class CustomerDAOTest {
 	}
 
 	@Test
-	@DatabaseSetup("classpath:sampledata/many-customers.xml")
-	public void testGetByName() {
-		String expectedName = "Kowalski";
+	@DatabaseSetup("classpath:sampledata/test-customers.xml")
+	public void testGetByNameTestData() {
+		String expectedName = "Benjamin";
+
+		List<CustomerBE> customers = customerDAO.getByName(expectedName);
+
+		assertThat(customers, contains(hasProperty("name", equalTo(expectedName))));
+	}
+	
+	@Test
+	@DatabaseSetup("classpath:sampledata/production-10000-customers.xml")
+	public void testGetByNameProductionData() {
+		String expectedName = "Benjamin";
 
 		List<CustomerBE> customers = customerDAO.getByName(expectedName);
 

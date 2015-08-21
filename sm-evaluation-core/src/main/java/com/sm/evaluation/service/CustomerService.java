@@ -67,11 +67,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public CustomerTO getByPassword(String password) {
-		CustomerBE customerBE = customerCache.getByPassword(password);
-		if (customerBE == null) {
-			return null;
-		}
-		CustomerTO customerTO = customerBEToCustomerTOConverter.convert(customerBE);
+		CustomerTO customerTO = customerCache.getByPassword(password);
 		return customerTO;
 	}
 

@@ -17,7 +17,7 @@ public class CustomerBEToCustomerTOConverter implements Converter<CustomerBE, Cu
 
 	@Override
 	public CustomerTO convert(CustomerBE customerBE) {
-		CustomerTO customerTO = new CustomerTO(customerBE.getId(), customerBE.getName());
+		CustomerTO customerTO = new CustomerTO(customerBE.getId(), customerBE.getName(), customerBE.getPassword());
 		return customerTO;
 	}
 

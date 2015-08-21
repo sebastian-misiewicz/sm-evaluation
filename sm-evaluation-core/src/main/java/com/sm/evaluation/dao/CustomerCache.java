@@ -7,30 +7,34 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sm.evaluation.entity.CustomerBE;
+import com.sm.evaluation.api.CustomerTO;
+import com.sm.evaluation.service.converter.CustomerBEToCustomerTOConverter;
 
 @Component
 public class CustomerCache {
 
-	private Map<String, CustomerBE> cache;
+	private Map<String, CustomerTO> cache;
 
 	@Autowired
 	private CustomerDAO customerDAO;
+	
+	@Autowired
+	private CustomerBEToCustomerTOConverter customerBEToCustomerTOConverter;
 
-	public CustomerBE getByPassword(String password) {
+	public CustomerTO getByPassword(String password) {
 		init();
 		
-		CustomerBE customerBE = cache.get(password);
-		return customerBE;
+		CustomerTO customerTO = cache.get(password);
+		return customerTO;
 	}
 
 	private void init() {
 		if (cache == null) {
-			cache = new HashMap<String, CustomerBE>();
+			cache = new HashMap<String, CustomerTO>();
 			
-			List<CustomerBE> allCustomers = customerDAO.getAll();
-			for(CustomerBE customerBE : allCustomers) {
-				cache.put(customerBE.getPassword(), customerBE);
+			List<CustomerTO> allCustomers = customerDAO.getAll();
+			for(CustomerTO customerTO : allCustomers) {
+				cache.put(customerTO.getPassword(), customerTO);
 			}
 		}
 	}
