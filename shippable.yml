@@ -2,6 +2,8 @@ language: java
 jdk: oraclejdk7
 cache: true
 
+script:
+	- mvn install -f sm-evaluation-base/pom.xml
+
 after_success:
-   - mvn clean cobertura:cobertura
-   - mvn test
+   - mvn test -f sm-evaluation-base/pom.xml
