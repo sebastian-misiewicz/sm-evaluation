@@ -1,10 +1,7 @@
 package com.sm.evaluation.dao;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.emptyCollectionOf;
-import static org.hamcrest.Matchers.hasProperty;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
@@ -38,12 +35,14 @@ public class CustomerDAOTest {
 		customerBE.setName(expectedName);
 
 		List<CustomerBE> customers = customerDAO.getByName(expectedName);
-		assertThat(customers, emptyCollectionOf(CustomerBE.class));
+		assertThat(customers).isEmpty();
 
 		customerDAO.saveOrUpdate(customerBE);
 
 		customers = customerDAO.getByName(expectedName);
-		assertThat(customers, contains(hasProperty("name", equalTo(expectedName))));
+		assertThat(customers).allSatisfy(customer -> {
+			assertThat(customer.getName()).isEqualTo(expectedName);
+		});
 	}
 
 	@Test
@@ -53,7 +52,9 @@ public class CustomerDAOTest {
 
 		List<CustomerBE> customers = customerDAO.getByName(expectedName);
 
-		assertThat(customers, contains(hasProperty("name", equalTo(expectedName))));
+		assertThat(customers).allSatisfy(customer -> {
+			assertThat(customer.getName()).isEqualTo(expectedName);
+		});
 	}
 	
 	@Test
@@ -63,6 +64,8 @@ public class CustomerDAOTest {
 
 		List<CustomerBE> customers = customerDAO.getByName(expectedName);
 
-		assertThat(customers, contains(hasProperty("name", equalTo(expectedName))));
+		assertThat(customers).allSatisfy(customer -> {
+			assertThat(customer.getName()).isEqualTo(expectedName);
+		});
 	}
 }
