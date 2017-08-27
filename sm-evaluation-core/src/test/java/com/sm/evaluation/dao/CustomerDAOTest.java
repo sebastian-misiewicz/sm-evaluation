@@ -34,12 +34,12 @@ public class CustomerDAOTest {
 		String expectedName = "test name";
 		customerBE.setName(expectedName);
 
-		List<CustomerBE> customers = customerDAO.getByName(expectedName);
+		List<CustomerBE> customers = customerDAO.findByName(expectedName);
 		assertThat(customers).isEmpty();
 
-		customerDAO.saveOrUpdate(customerBE);
+		customerDAO.save(customerBE);
 
-		customers = customerDAO.getByName(expectedName);
+		customers = customerDAO.findByName(expectedName);
 		assertThat(customers).allSatisfy(customer -> {
 			assertThat(customer.getName()).isEqualTo(expectedName);
 		});
@@ -50,7 +50,7 @@ public class CustomerDAOTest {
 	public void testGetByNameTestData() {
 		String expectedName = "Benjamin";
 
-		List<CustomerBE> customers = customerDAO.getByName(expectedName);
+		List<CustomerBE> customers = customerDAO.findByName(expectedName);
 
 		assertThat(customers).allSatisfy(customer -> {
 			assertThat(customer.getName()).isEqualTo(expectedName);
@@ -62,7 +62,7 @@ public class CustomerDAOTest {
 	public void testGetByNameProductionData() {
 		String expectedName = "Benjamin";
 
-		List<CustomerBE> customers = customerDAO.getByName(expectedName);
+		List<CustomerBE> customers = customerDAO.findByName(expectedName);
 
 		assertThat(customers).allSatisfy(customer -> {
 			assertThat(customer.getName()).isEqualTo(expectedName);

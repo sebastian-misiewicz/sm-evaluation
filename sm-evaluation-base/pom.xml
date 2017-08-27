@@ -16,8 +16,8 @@
 
 	<properties>
 		<javaee-api.version>7.0</javaee-api.version>
-		<spring.version>4.0.4.RELEASE</spring.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
+		<hibernate.version>5.2.10.Final</hibernate.version>
 		<junit.version>4.11</junit.version>
 		<tomcat-dbcp.version>8.0.5</tomcat-dbcp.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
@@ -28,6 +28,7 @@
 		<mysql.version>5.1.30</mysql.version>
 		<postgresql.version>42.1.4</postgresql.version>
 		<cucumber.version>1.2.5</cucumber.version>
+		<spring-data.version>1.11.6.RELEASE</spring-data.version>
 	</properties>
 
 	<dependencyManagement>
@@ -80,6 +81,11 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>

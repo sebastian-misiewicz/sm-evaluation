@@ -30,7 +30,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public List<CustomerTO> getByName(String name) {
-		List<CustomerBE> customersBes = customerDAO.getByName(name);
+		List<CustomerBE> customersBes = customerDAO.findByName(name);
 
 		List<CustomerTO> customerTOs = convert(customersBes);
 		return customerTOs;
@@ -39,18 +39,18 @@ public class CustomerService implements ICustomerService {
 	@Override
 	public void saveOrUpdate(CustomerTO customerTO) {
 		CustomerBE customerBE = customerTOToCustomerBEConverter.convert(customerTO);
-		customerDAO.saveOrUpdate(customerBE);
+		customerDAO.save(customerBE);
 	}
 
 	@Override
-	public CustomerTO getById(int id) {
-		CustomerBE customerBE = customerDAO.getById(id);
+	public CustomerTO getById(long id) {
+		CustomerBE customerBE = customerDAO.findOne(id);
 		CustomerTO customerTO = customerBEToCustomerTOConverter.convert(customerBE);
 		return customerTO;
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(long id) {
 		customerDAO.delete(id);
 	}
 

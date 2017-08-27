@@ -1,14 +1,15 @@
 package com.sm.evaluation.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,30 +21,29 @@ import javax.persistence.Table;
 public class ShoppingCartBE {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "hash")
+	private String hash;
 	
 	@ManyToOne
 	@JoinColumn(name = "customerid")
 	private CustomerBE customer;
 	
-	@OneToMany(mappedBy = "shoppingCart")
+	@OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<ShoppingCartItemBE> items;
 	
 	@Column(name = "checkoutdate")
-	private Date checkoutDate;
+	private LocalDateTime checkoutDate;
 	
 	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
-	private ShoppingCartStatus status;
+	private ShoppingCartStatus status = ShoppingCartStatus.UNPAID;
 
-	public Integer getId() {
-		return id;
+	public String getHash() {
+		return hash;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
 	public CustomerBE getCustomer() {
@@ -61,12 +61,20 @@ public class ShoppingCartBE {
 	public void setItems(Set<ShoppingCartItemBE> items) {
 		this.items = items;
 	}
+	
+	public void addItem(ShoppingCartItemBE item) {
+		if (this.items == null) {
+			this.items = new HashSet<>();
+		}
+		item.setShoppingCart(this);
+		this.items.add(item);
+	}
 
-	public Date getCheckoutDate() {
+	public LocalDateTime  getCheckoutDate() {
 		return checkoutDate;
 	}
 
-	public void setCheckoutDate(Date checkoutDate) {
+	public void setCheckoutDate(LocalDateTime  checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
 

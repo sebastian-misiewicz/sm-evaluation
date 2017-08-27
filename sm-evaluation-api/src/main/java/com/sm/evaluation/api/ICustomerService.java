@@ -34,7 +34,7 @@ public interface ICustomerService {
 	 *            the id
 	 * @return {@link CustomerTO}
 	 */
-	CustomerTO getById(int id);
+	CustomerTO getById(long id);
 
 	/**
 	 * Saves or updated the given customer.
@@ -51,6 +51,6 @@ public interface ICustomerService {
 	 * @param id
 	 *            the id
 	 */
-	void delete(int id);
+	void delete(long id);
 
 }
