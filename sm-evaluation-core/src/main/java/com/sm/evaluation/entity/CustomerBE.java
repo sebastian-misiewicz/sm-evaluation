@@ -1,12 +1,14 @@
 package com.sm.evaluation.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -60,6 +62,9 @@ public class CustomerBE {
 	@Column(name = "logindate")
 	private Date loginDate;
 
+	@OneToMany(mappedBy = "customer")
+	private Set<ShoppingCartBE> shoppingCarts;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -156,4 +161,36 @@ public class CustomerBE {
 		this.fax = fax;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public Date getLoginDate() {
+		return loginDate;
+	}
+
+	public void setLoginDate(Date loginDate) {
+		this.loginDate = loginDate;
+	}
+
+	public Set<ShoppingCartBE> getShoppingCarts() {
+		return shoppingCarts;
+	}
+
+	public void setShoppingCarts(Set<ShoppingCartBE> shoppingCarts) {
+		this.shoppingCarts = shoppingCarts;
+	}
+	
 }
