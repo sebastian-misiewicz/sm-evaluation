@@ -17,7 +17,7 @@
 		<javaee-api.version>7.0</javaee-api.version>
 		<spring.version>4.0.4.RELEASE</spring.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<tomcat-dbcp.version>8.0.5</tomcat-dbcp.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		<spring-test-dbunit.version>1.1.0</spring-test-dbunit.version>
