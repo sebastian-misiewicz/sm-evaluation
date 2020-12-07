@@ -1,5 +1,7 @@
 package com.sm.evaluation.dao;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class CustomerCacheTest {
 	@Test
 	public void test() {
 		CustomerTO customerTO = customerCache.getByPassword("aaa");
+
+		assertThat(customerTO).isNull();
 	}
 	
 	
