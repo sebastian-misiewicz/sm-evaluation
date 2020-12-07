@@ -13,12 +13,13 @@
 			<th>Password</th>
 			<th>action</th>
 		</tr>
-			<tr>
-				<td>${customerTO.id}</td>
-				<td>${customerTO.name}</td>
-				<td>${customerTO.password}</td>
-				<td><a href="<c:url value="/editcustomer.html?id=${customerTO.id}"/>">edit</a>|<a
-					href="<c:url value="/deletecustomer.html?id=${customerTO.id}"/>">delete</a></td>
-			</tr>
+			<c:forEach var="customerTO" items="${customerTOs}">
+                <tr>
+                    <td>${customerTO.id}</td>
+                    <td>${customerTO.name}</td>
+                    <td><a href="<c:url value="/editcustomer.html?id=${customerTO.id}"/>">edit</a>|<a
+                        href="<c:url value="/deletecustomer.html?id=${customerTO.id}"/>">delete</a></td>
+                </tr>
+            </c:forEach>
 	</table>
 </t:template>

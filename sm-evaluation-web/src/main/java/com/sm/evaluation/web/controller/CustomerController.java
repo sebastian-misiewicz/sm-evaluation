@@ -1,5 +1,6 @@
 package com.sm.evaluation.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,11 @@ public class CustomerController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(@RequestParam(value = "name", defaultValue = "") String name, Model model) {
-		CustomerTO customerTO = null;
+		List<CustomerTO> customerTOs = new ArrayList<>();
 		if (!"".equals(name)) {
-			customerTO = customerService.getByPassword(name);
+			customerTOs.addAll(customerService.getByName(name));
 		}
-		model.addAttribute("customerTO", customerTO);
+		model.addAttribute("customerTOs", customerTOs);
 		model.addAttribute("name", name);
 		return "index";
 	}
