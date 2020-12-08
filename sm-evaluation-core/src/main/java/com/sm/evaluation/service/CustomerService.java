@@ -37,9 +37,9 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public void saveOrUpdate(CustomerTO customerTO) {
+	public CustomerTO saveOrUpdate(CustomerTO customerTO) {
 		CustomerBE customerBE = customerTOToCustomerBEConverter.convert(customerTO);
-		customerDAO.saveOrUpdate(customerBE);
+		return customerBEToCustomerTOConverter.convert(customerDAO.saveOrUpdate(customerBE));
 	}
 
 	@Override
@@ -54,6 +54,12 @@ public class CustomerService implements ICustomerService {
 		customerDAO.delete(id);
 	}
 
+	@Override
+	public List<CustomerTO> getAll() {
+
+		return customerDAO.getAll();
+	}
+
 	private List<CustomerTO> convert(List<CustomerBE> customerBEs) {
 		List<CustomerTO> customerTOs = new ArrayList<CustomerTO>();
 
@@ -63,12 +69,6 @@ public class CustomerService implements ICustomerService {
 		}
 
 		return customerTOs;
-	}
-
-	@Override
-	public CustomerTO getByPassword(String password) {
-		CustomerTO customerTO = customerCache.getByPassword(password);
-		return customerTO;
 	}
 
 }

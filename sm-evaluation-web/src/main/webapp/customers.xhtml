@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<h:head>
+		<title>Warehouse System - Customers</title>
+	</h:head>
+
+	<h:body>
+		<ui:include src="navigation.xhtml" />
+
+		<p:panel header="Customers">
+
+			<p:dataTable var="customer" value="#{customerController.customers}">
+				<p:column headerText="#">
+					<h:outputText value="#{customer.id}" />
+				</p:column>
+
+				<p:column headerText="Name">
+					<h:outputText value="#{customer.name}" />
+				</p:column>
+
+				<p:column headerText="E-Mail">
+					<h:outputText value="#{customer.email}" />
+				</p:column>
+
+				<p:column headerText="Actions">
+					<p:button outcome="addcustomer" value="Edit" icon="ui-icon-pencil">
+						<f:param name="customerId" value="#{customer.id}" />
+					</p:button>
+					<p:commandButton value="Delete" icon="ui-icon-trash" action="#{addCustomerController.delete(customer)}" />
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:body>
+</html>

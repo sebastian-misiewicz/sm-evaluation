@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Warehouse System - Customer</title>
+</h:head>
+
+<h:body>
+    <ui:include src="navigation.xhtml" />
+    <p:panel header="Customer">
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="customerName" value="Name:" style="font-weight:bold" />
+                <p:inputText id="customerName" value="#{addCustomerController.customer.name}"/>
+
+                <h:outputLabel for="customerEmail" value="E-Mail:" style="font-weight:bold" />
+                <p:inputText id="customerEmail" value="#{addCustomerController.customer.email}" />
+                <p:commandButton value="Save" process="@parent" action="#{addCustomerController.save}" />
+            </h:panelGrid>
+
+        </h:form>
+    </p:panel>
+</h:body>
+</html>

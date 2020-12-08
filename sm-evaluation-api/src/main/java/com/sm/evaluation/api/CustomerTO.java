@@ -15,16 +15,16 @@ public class CustomerTO implements Serializable {
 
 	private String name;
 	
-	private String password;
+	private String email;
 
 	public CustomerTO() {
 	}
 
-	public CustomerTO(Integer id, String name, String password) {
+	public CustomerTO(Integer id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.password = password;
+		this.email = email;
 	}
 
 	public Integer getId() {
@@ -43,13 +43,12 @@ public class CustomerTO implements Serializable {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-
 }

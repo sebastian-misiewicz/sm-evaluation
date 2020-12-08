@@ -26,7 +26,7 @@ public class CustomerCacheTest {
 	
 	@Test
 	public void test() {
-		CustomerTO customerTO = customerCache.getByPassword("aaa");
+		CustomerTO customerTO = customerCache.getByEmail("aaa");
 
 		assertThat(customerTO).isNull();
 	}

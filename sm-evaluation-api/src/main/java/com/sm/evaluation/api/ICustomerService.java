@@ -19,15 +19,6 @@ public interface ICustomerService {
 	List<CustomerTO> getByName(String name);
 	
 	/**
-	 * Retrieves a customer by the given password.
-	 * 
-	 * @param password
-	 *            the password
-	 * @return {@link CustomerTO}s
-	 */
-	CustomerTO getByPassword(String password);
-
-	/**
 	 * Retrieves the customer by its id.
 	 * 
 	 * @param id
@@ -43,7 +34,7 @@ public interface ICustomerService {
 	 *            the {@link CustomerTO}
 	 * @return updated {@link CustomerTO}
 	 */
-	void saveOrUpdate(CustomerTO customerTO);
+	CustomerTO saveOrUpdate(CustomerTO customerTO);
 
 	/**
 	 * Deletes a customer with given id.
@@ -53,4 +44,5 @@ public interface ICustomerService {
 	 */
 	void delete(int id);
 
+    List<CustomerTO> getAll();
 }

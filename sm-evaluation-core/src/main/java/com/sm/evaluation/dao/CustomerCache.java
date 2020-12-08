@@ -21,10 +21,10 @@ public class CustomerCache {
 	@Autowired
 	private CustomerBEToCustomerTOConverter customerBEToCustomerTOConverter;
 
-	public CustomerTO getByPassword(String password) {
+	public CustomerTO getByEmail(String email) {
 		init();
 		
-		CustomerTO customerTO = cache.get(password);
+		CustomerTO customerTO = cache.get(email);
 		return customerTO;
 	}
 
@@ -34,7 +34,7 @@ public class CustomerCache {
 			
 			List<CustomerTO> allCustomers = customerDAO.getAll();
 			for(CustomerTO customerTO : allCustomers) {
-				cache.put(customerTO.getPassword(), customerTO);
+				cache.put(customerTO.getEmail(), customerTO);
 			}
 		}
 	}

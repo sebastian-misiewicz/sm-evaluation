@@ -18,8 +18,9 @@ public class CustomerDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void saveOrUpdate(CustomerBE customerBE) {
+	public CustomerBE saveOrUpdate(CustomerBE customerBE) {
 		sessionFactory.getCurrentSession().saveOrUpdate(customerBE);
+		return customerBE;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -49,7 +50,7 @@ public class CustomerDAO {
 	@SuppressWarnings("unchecked")
 	public List<CustomerTO> getAll() {
 		Query query = sessionFactory.getCurrentSession().createQuery(//
-				"select new com.sm.evaluation.api.CustomerTO(customer.id, customer.name, customer.password) " + //
+				"select new com.sm.evaluation.api.CustomerTO(customer.id, customer.name, customer.email) " + //
 						"from CustomerBE as customer");
 
 		List<CustomerTO> customers = query.list();
