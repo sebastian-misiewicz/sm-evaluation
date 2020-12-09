@@ -50,11 +50,6 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public void delete(int id) {
-		customerDAO.delete(id);
-	}
-
-	@Override
 	public List<CustomerTO> getAll() {
 
 		return customerDAO.getAll();

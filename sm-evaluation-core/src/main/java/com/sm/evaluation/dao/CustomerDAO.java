@@ -42,11 +42,6 @@ public class CustomerDAO {
 		return customerBE;
 	}
 
-	public void delete(int id) {
-		CustomerBE customerBE = (CustomerBE) sessionFactory.getCurrentSession().get(CustomerBE.class, id);
-		sessionFactory.getCurrentSession().delete(customerBE);
-	}
-
 	@SuppressWarnings("unchecked")
 	public List<CustomerTO> getAll() {
 		Query query = sessionFactory.getCurrentSession().createQuery(//

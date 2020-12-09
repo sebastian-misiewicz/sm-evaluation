@@ -8,7 +8,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../sm-evaluation-api</module>
 		<module>../sm-evaluation-core</module>
 		<module>../sm-evaluation-web</module>
 	</modules>
