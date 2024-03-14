@@ -26,7 +26,7 @@
 		<mysql.version>8.0.28</mysql.version>
 		<servlet.version>3.1.0</servlet.version>
 		<jsf.version>2.2.13</jsf.version>
-		<primefaces.version>6.1</primefaces.version>
+		<primefaces.version>8.0</primefaces.version>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 	</properties>
 
